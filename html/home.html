@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link rel="stylesheet" href="..//css/homeCss.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="..//css/home.css">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,35 +18,29 @@
 
 <body>
     <header>
-        <h1>CarFactory4.0</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <img src="../titulo.png" alt="CarFactory4.0" class="logo">
     </header>
-    
-    <div class="menu-lateral">
-        <ul>
-            <li><a href="#" id="button_estoque"><span class="material-symbols-outlined">
-                        add
-                    </span>Estoque</a></li>
-            <li><a href="#" id="button_producao"><span class="material-symbols-outlined">
-                        add
-                    </span>Produção</a></li>
-            <li><a href="#" id="button_manutencao"><span class="material-symbols-outlined">
-                        add
-                    </span>Manutenção</a></li>
-        </ul>
-    </div>
 
-    <div class="conteudo">
-        <div class="secao">
-            <p><strong>ESTOQUE</strong></p>
-        </div>
-        <div class="secao">
-            <p><strong>PRODUÇÃO</strong></p>
-        </div>
-        <div class="secao">
-            <p><strong>MANUTENÇÃO</strong></p>
-        </div>
-    </div>
-    
+    <nav id="menu" class="menu">
+        <ul>
+            <li><button class="menu_button">Add Produção</button></li>
+            <li><button class="menu_button">Add Manutenção</button></li>
+            <li><button class="menu_button">Add Insumo</button></a></li>
+        </ul>
+    </nav>
+
+    <ul class="ul_conteudo">
+        <li class="conteudo"><img src="../grafico1.webp" alt="" class="grafico"></li>
+        <li class="conteudo"><img src="../marketing-chart-illustration-f543e0.webp" alt="" class="grafico"></li>
+        <li class="conteudo"><img src="../858698.png" alt="" class="grafico"></li>
+    </ul>
+
 </body>
+<script src="../script/index.js"></script>
 
 </html>

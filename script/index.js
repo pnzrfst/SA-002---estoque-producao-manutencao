@@ -41,3 +41,8 @@ function vaiParaCadastro(){
 function vaiParaLogin(){
     window.location.replace("http://127.0.0.1:5500/html/login.html");
 }
+
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("active"); 
+  }
