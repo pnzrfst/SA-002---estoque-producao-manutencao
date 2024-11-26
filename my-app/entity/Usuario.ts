@@ -8,7 +8,7 @@ export default class Usuario{
     private password: string;
     private criado_em: Date;
 
-    constructor(nome: string, cpf: string, email: string, password: string, criado_em: Date, id?: string){
+    constructor(nome: string, cpf: string, email: string, password: string, id?: string){
         this.id = id === undefined ? uuid() : id
         this.nome = nome;
         this.cpf = cpf;

@@ -32,6 +32,30 @@ const config: ForgeConfig = {
               js: './src/preload.ts',
             },
           },
+          {
+            html: './src/views/login/login.html',
+            js: './src/views/login/rendererLogin.ts',
+            name: 'login',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
+            html: './src/views/cadastro/cadastro.html',
+            js: './src/views/cadastro/rendererCadastro.ts',
+            name: 'cadastro',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
+            html: './src/views/home/home.html',
+            js: './src/views/home/homeRenderer.ts',
+            name: 'home',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
         ],
       },
     }),

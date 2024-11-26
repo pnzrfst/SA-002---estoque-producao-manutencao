@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../index.css">
     <title>CarFactory4.0</title>
-
-
 </head>
-<body>
 
+<body>
     <div class="login-container">
         <h1>CarFactory 4.0</h1>
         <p>Bem-vindo de volta! Por favor, faça login para acessar o sistema.</p>
 
         <!-- Formulário de login -->
-        <form action="#" method="POST">
-            <input type="text" class="input-login" placeholder="Nome de usuário" required>
-            <input type="password" class="input-login" placeholder="Senha" required>
-            <button type="submit" class="btn-login">Entrar</button>
+        <form>
+            <input type="text" id="email" class="email" placeholder="Email" required>
+            <input type="password" id="senha" class="input-login" placeholder="Senha" required>
+            <button type="submit" id="btn-login" class="btn-login">Entrar</button>
         </form>
         <div class="footer">
-            <p onclick="vaiParaCadastro()">Deseja se cadastrar? <a href="#">Cadastrar-se</a></p>
+            <p id="btn-cadastro">Vai para cadastro</p>
         </div>
     </div>
 

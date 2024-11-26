@@ -41,6 +41,7 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/pg": "^8.11.10",
+    "bcrypt": "^5.1.1",
     "electron-squirrel-startup": "^1.0.1",
     "pg": "^8.13.1",
     "uuid": "^11.0.3"
