@@ -41,8 +41,8 @@ const config: ForgeConfig = {
             },
           },
           {
-            html: './src/views/cadastro/cadastro.html',
-            js: './src/views/cadastro/rendererCadastro.ts',
+            html: './src/views/login/cadastro/cadastro.html',
+            js: './src/views/login/cadastro/rendererCadastro.ts',
             name: 'cadastro',
             preload: {
               js: './src/preload.ts',
@@ -52,6 +52,30 @@ const config: ForgeConfig = {
             html: './src/views/home/home.html',
             js: './src/views/home/homeRenderer.ts',
             name: 'home',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
+            html: './src/views/producao/producao.html',
+            js: './src/views/producao/producaoRenderer.ts',
+            name: 'producao',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
+            html: './src/views/insumo/insumo.html',
+            js: './src/views/insumo/insumoRenderer.ts',
+            name: 'insumo',
+            preload: {
+              js: './src/preload.ts',
+            },
+          },
+          {
+            html: './src/views/manutencao/manutencao.html',
+            js: './src/views/manutencao/manutencaoRenderer.ts',
+            name: 'manutencao',
             preload: {
               js: './src/preload.ts',
             },

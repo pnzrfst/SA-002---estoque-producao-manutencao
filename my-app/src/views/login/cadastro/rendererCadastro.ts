@@ -1,4 +1,4 @@
-import "../../index.css"
+import "../../../index.css"
 
 document.getElementById("return-login").addEventListener("click", () =>{
     (window as any).navigationApi.voltarLogin()
@@ -13,7 +13,7 @@ document.getElementById("cadastrar-user").addEventListener("click", async(event:
     const password = document.getElementById('senha_cadastro') as HTMLInputElement;
     console.log(email_cadastro.value)
 
-    const userCadastrado = await (window as any).dbAPI.verificarUserCadastrado(email_cadastro.value);
+    const userCadastrado = await (window as any).userApi.verificarUserCadastrado(email_cadastro.value);
 
     if(userCadastrado?.id){
         console.log("Usuário já possui cadastro.")
@@ -28,6 +28,6 @@ document.getElementById("cadastrar-user").addEventListener("click", async(event:
         password: password.value
     }
 
-    await (window as any).dbAPI.cadastrarUser(novoUser);
+    await (window as any).userApi.cadastrarUser(novoUser);
 
 })  

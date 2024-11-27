@@ -13,7 +13,7 @@ document.getElementById("btn-login").addEventListener("click", async (event: Mou
     const email = document.getElementById("email") as HTMLInputElement;
     const senha = document.getElementById("senha") as HTMLInputElement;
   
-    const usuario = await (window as any).dbAPI. acharContaCadastrada(email.value)
+    const usuario = await (window as any).userApi.acharContaUser(email.value)
     if(!usuario){
       console.log("USUÁRIO NÃO EXISTE...")
       return;
@@ -31,5 +31,5 @@ document.getElementById("btn-login").addEventListener("click", async (event: Mou
       return;
     }
   
-    (window as any).navigationAPI.irHome();
+    (window as any).navigationApi.irHome()
   })
