@@ -24,7 +24,7 @@ O projeto CarFactory tem como objetivo desenvolver um sistema que permite ao usu
 
 - **Adrian da Silva Berlinck** - adrian_berlinck@estudante.sc.senai.br
 - **Luiz Carlos Pedro** - luiz_c_pedro@estudante.sc.senai.br
-
+- **Alan de Medeiros** - alanvou@gmail.com
 
 ## 🛠️ Construído com
 
@@ -42,6 +42,7 @@ O projeto CarFactory tem como objetivo desenvolver um sistema que permite ao usu
 
 - **Adrian** - (48) 9 9180-0287
 - **Luiz** - (48) 9 9954-8191
+- **Alan** - (48) 9 9180-5602
 
 ## Link Para Situacao de Aprendizagem
 
