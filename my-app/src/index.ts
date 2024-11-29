@@ -102,9 +102,14 @@ ipcMain.handle('buscarInsumos', async() =>{
 })
 
 
+ipcMain.handle('trazerId', async (_:any, id: string) => {
+  return await new InsumosRepository().trazerInsumoPorId(id)
+})
 
-
-
+ipcMain.handle('atualizarInsumo', async(_: any, insumo: any, id: string) =>{
+  const {nome_insumo, quantidade, preco_unitario} = insumo;
+  new InsumosRepository().atualizarInsumo([insumo.setNome_insumo = nome_insumo, insumo.setQuantidade = quantidade, insumo.setPreco_unitario = preco_unitario], id)
+})
 
 
 

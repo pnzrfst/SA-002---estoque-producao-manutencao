@@ -9,35 +9,35 @@ document.getElementById('btn-home').addEventListener('click',async (event : Mous
 
 document.getElementById('salvarInsumo').addEventListener('click', async(event: MouseEvent) =>{
     event.preventDefault()
-    var nomeProduto = document.getElementById('nomeProduto') as HTMLInputElement
-    var quantidadeProduto = document.getElementById('quantidadeProduto') as HTMLInputElement
-    var precoUnitario = document.getElementById('precoUnitario') as HTMLInputElement
+    var nomeInsumo = document.getElementById('nomeInsumo') as HTMLInputElement;
+    var quantidadeInsumo = document.getElementById('quantidadeInsumo') as HTMLInputElement;
+    var precoUnitario = document.getElementById('precoUnitario') as HTMLInputElement;
     
     
-    const produtoCadastrado = await (window as any).insumoApi.verificarInsumoCadastrado(nomeProduto)
-    if(produtoCadastrado){
-      console.log("Esse produto já está cadastrado em nossas bases de dados.")
+    const InsumoCadastrado = await (window as any).insumoApi.verificarInsumoCadastrado(nomeInsumo);
+    if(InsumoCadastrado){
+      console.log("Esse Insumo já está cadastrado em nossas bases de dados.");
       return;
     }
 
     const novoInsumo = {
-        nome_insumo: nomeProduto.value,
-        quantidade: quantidadeProduto.value,
+        nome_insumo: nomeInsumo.value,
+        quantidade: quantidadeInsumo.value,
         preco_unitario: precoUnitario.value
     }
 
     await (window as any).insumoApi.salvarInsumo(novoInsumo);
-    mostrarInsumos()
+    mostrarInsumos();
     
-    nomeProduto.value = ""
-    quantidadeProduto.value = ""
-    precoUnitario.value = ""
+    nomeInsumo.value = "";
+    quantidadeInsumo.value = "";
+    precoUnitario.value = "";
 })
 
 
 const mostrarInsumos = async() =>{
-    const corpoTabela = document.getElementById('tbody')
-    corpoTabela.innerHTML = ""
+    const corpoTabela = document.getElementById('tbody');
+    corpoTabela.innerHTML = "";
 
     const insumos = await (window as any).insumoApi.trazerInsumos()
 
@@ -46,26 +46,39 @@ const mostrarInsumos = async() =>{
 
         const id = document.createElement("td");
         id.innerText = insumo.id;
-        linhaTabela.appendChild(id)
+        linhaTabela.appendChild(id);
 
         const nomeInsumo = document.createElement("td");
         nomeInsumo.innerText = insumo.nome_insumo;
-        linhaTabela.appendChild(nomeInsumo)
+        linhaTabela.appendChild(nomeInsumo);
 
         const quantidadeInsumo = document.createElement("td");
         quantidadeInsumo.innerText = insumo.quantidade;
-        linhaTabela.appendChild(quantidadeInsumo)
+        linhaTabela.appendChild(quantidadeInsumo);
 
         const precoUnitario = document.createElement("td");
         precoUnitario.innerText = insumo.preco_unitario;
-        linhaTabela.appendChild(precoUnitario)
+        linhaTabela.appendChild(precoUnitario);
 
         const buttonAtualizar = document.createElement("button");
+        buttonAtualizar.id = 'btnAtualizar'
         buttonAtualizar.innerText = "Atualizar insumo";
-        linhaTabela.appendChild(buttonAtualizar)
+        buttonAtualizar.setAttribute('id', insumo.id);
+        linhaTabela.appendChild(buttonAtualizar);
+
+
+        //atualizar a qtd de insumos
+        buttonAtualizar.addEventListener("click", async(event: MouseEvent) =>{
+            event.preventDefault();
+            console.log(insumo.id)
+            const divFormUpdate = document.getElementById('att-area');
+            show(divFormUpdate);
+            pegarInfosInsumo(insumo.id);
+        })
 
         const buttonDeletar = document.createElement("button");
-        buttonDeletar.innerText = "Apagara insumo";
+        buttonAtualizar.classList.add('btn-deletar')
+        buttonDeletar.innerText = "Apagar insumo";
         linhaTabela.appendChild(buttonDeletar);
 
         corpoTabela.appendChild(linhaTabela)
@@ -74,3 +87,47 @@ const mostrarInsumos = async() =>{
 }
 
 
+ //escutar para atualizar
+ document.getElementById('btn-atualizar').addEventListener('click', async(event: MouseEvent) =>{
+    const
+})
+
+
+async function atualizarInsumo(id: string){
+
+    const dadosDoInsumo = await (window as any).insumoApi.trazerInsumoPorId(id)
+
+    var nomeInsumo = document.getElementById('attNomeInsumo') as HTMLInputElement
+    var quantidadeInsumo = document.getElementById('attQuantidadeInsumo') as HTMLInputElement
+    var precoUnitario = document.getElementById('attPrecoUnitario') as HTMLInputElement
+
+
+    const insumoAtualizado = { 
+        nomeInsumo : dadosDoInsumo.nome_insumo,
+        quantidade :  dadosDoInsumo.quantidade,
+        precoUnitario : dadosDoInsumo.preco_unitario
+    }
+
+    console.log(insumoAtualizado)
+
+   await (window as any).insumoApi.atualizarInsumo(insumoAtualizado, id)
+}
+
+
+async function pegarInfosInsumo(id : string){
+    const dadosDoInsumo = await (window as any).insumoApi.trazerInsumoPorId(id)
+
+    var nomeInsumo = document.getElementById('attNomeInsumo') as HTMLInputElement
+    var quantidadeInsumo = document.getElementById('attQuantidadeInsumo') as HTMLInputElement
+    var precoUnitario = document.getElementById('attPrecoUnitario') as HTMLInputElement
+
+    nomeInsumo.value = dadosDoInsumo.nome_insumo
+    quantidadeInsumo.value = dadosDoInsumo.quantidade
+    precoUnitario.value = dadosDoInsumo.preco_unitario
+
+}
+
+
+function show(html: HTMLElement){
+    html.classList.remove('disabled')
+}

@@ -9,18 +9,18 @@
     <header> <button id="btn-home" type="button">Voltar para a pagina inicial</button></header>
     <main>
         <h1>entrou</h1>
-        <section class="form-area">
-            <div class="form">
+        <section class="form-cadastro-area">
+            <div>
                 <form>
-                <input id="nomeProduto" type="text" placeholder="Informe o nome do produto">
-                <input id="quantidadeProduto" type="number" placeholder="Informe a quantidade">
-                <input id="precoUnitario" type="number" placeholder="Informe o preço unitário">
-            </form>
+                    <input id="nomeInsumo" type="text" placeholder="Informe o nome do Insumo">
+                    <input id="quantidadeInsumo" type="number" placeholder="Informe a quantidade">
+                    <input id="precoUnitario" type="number" placeholder="Informe o preço unitário">
+                </form>
             <button id="salvarInsumo">Cadastrar insumo</button>
             </div>
         </section>
         
-        <table id="tabelaProdutos">
+        <table id="tabelaInsumo">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -35,8 +35,17 @@
             <tbody id="tbody">  
             </tbody>
         </table>
-       
         
+        <section>
+            <div id="att-area" class="disabled">
+                <form id="form-update-area" >
+                    <input id="attNomeInsumo" type="text" placeholder="Informe o nome do Insumo">
+                    <input id="attQuantidadeInsumo" type="number" placeholder="Informe a quantidade">
+                    <input id="attPrecoUnitario" type="number" placeholder="Informe o preço unitário">
+                </form>
+                <button type="button" id="btn-atualizar">Atualizar insumo</button>
+            </div>
+        </section>
     </main>
     <aside></aside>
     <footer></footer>

@@ -11,7 +11,9 @@ contextBridge.exposeInMainWorld("userApi", {
 contextBridge.exposeInMainWorld("insumoApi", {
     verificarInsumoCadastrado: async(nome: string) => await ipcRenderer.invoke("insumoExiste", nome),
     salvarInsumo: async(insumo: Insumos) => await ipcRenderer.invoke('saveInsumo', insumo),
-    trazerInsumos: async() => await ipcRenderer.invoke('buscarInsumos')
+    trazerInsumos: async() => await ipcRenderer.invoke('buscarInsumos'),
+    trazerInsumoPorId: async(id: string) => await ipcRenderer.invoke('trazerId', id),
+    atualizarInsumo: async(insumo: any) => await ipcRenderer.invoke('atualizarInsumo', insumo)
 })
 
 
