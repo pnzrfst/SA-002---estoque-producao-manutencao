@@ -1,57 +1,63 @@
-<!DOCTYPE html>
+/*<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarFactory4.0</title>
+    <title>CarFactory 4.0</title>
     <link rel="stylesheet" href="../css/producao.css">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <main class="container-main">
         <div class="container">
             <div class="producao-container">
-                <h1>Adicionar Producao</h1>
-                <form action="#" method="GET">
+                <h1>Adicionar Produção</h1>
+                <form id="form_producao">
                     <input type="text" class="input-login" placeholder="Chassi" id="chassi" required>
-                    <input type="text" class="input-login" placeholder="Modelo Veiculo" id="modelo_veiculo" required>
+                    <input type="text" class="input-login" placeholder="Modelo Veículo" id="modelo_veiculo" required>
                     <input type="text" class="input-login" id="cor" placeholder="Cor" maxlength="14">
-
+                    <button type="submit" id="btn_producao" class="btn-login">Iniciar Produção</button>
                 </form>
-
             </div>
 
             <div class="producao-container">
                 <h1>Informar Insumo</h1>
-                <form action="#" method="GET">
-
+                <form id="form_insumo">
                     <input type="text" class="input-login" placeholder="Nome Insumo" id="nome_insumo" required>
                     <input type="text" class="input-login" placeholder="Quantidade" id="quantidade_insumo" required>
                     <button type="submit" id="btn_Insumo" class="btn-login">Adicionar Insumo</button>
-                    <button type="submit" id="btn_producao" class="btn-login">Iniciar Producao</button>
-
                 </form>
             </div>
         </div>
 
-
         <div class="lista" id="lista_insumo">
-            <ul>
-
-                <li>item insumo</li>
-                <li>item insumo</li>
-                <li>item insumo</li>
-                <li>item insumo</li>
-            </ul>
+            <ul id="insumo-list"></ul>
         </div>
-
     </main>
 
+    <div id="modal-edicao" style="display: none;">
+    <div class="modal-content">
+        <h2>Editar Insumo</h2>
+        <label for="modal-nome">Nome do Insumo:</label>
+        <input type="text" id="modal-nome" required>
+        
+        <label for="modal-quantidade">Quantidade:</label>
+        <input type="text" id="modal-quantidade" required>
+        
+        <label for="modal-chassi">Chassi:</label>
+        <input type="text" id="modal-chassi" required>
+        
+        <label for="modal-modelo">Modelo:</label>
+        <input type="text" id="modal-modelo" required>
+        
+        <label for="modal-cor">Cor:</label>
+        <input type="text" id="modal-cor" required>
 
+        <button id="btn-salvar-edicao">Salvar Edição</button>
+        <button onclick="fecharModal()">Fechar</button>
+    </div>
+</div>
+
+    <script src="../script/produto.js"></script>
 </body>
-<script src="../script/index.js"></script>
-
 </html>
