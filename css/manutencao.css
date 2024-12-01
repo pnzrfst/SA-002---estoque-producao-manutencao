@@ -1,0 +1,110 @@
+/* Resetando margens e paddings para um padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+
+    display: flex; /* Usando Flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Main container */
+main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo para as telas */
+.tela1, .tela2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tela2{
+    margin-top: 10px;
+}
+
+/* Estilo da sub_tela */
+.sub_tela {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Cabeçalhos */
+h1, h2 {
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center; /* Centraliza os títulos */
+}
+
+/* Estilos do formulário */
+.cadastro_manutencao {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px; /* Limita a largura do formulário */
+    margin: 0 auto; /* Centraliza o formulário dentro da tela */
+}
+
+input[type="text"], input[type="date"], input[type="number"], textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%; /* Faz os inputs ocuparem toda a largura disponível */
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, textarea {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Faz o botão ocupar toda a largura do formulário */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para a lista de manutenções */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+ul li {
+    background-color: #ecf0f1;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
