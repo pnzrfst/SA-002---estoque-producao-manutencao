@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CarFactory4.0</title>
+
+
 </head>
+
 <body>
-    <h1>entrou</h1>
-    <button id="btn-home" type="button">Voltar para a pagina inicial</button>
+    <header class="header-icon-infos">
+        <h1>Car Factory 4.0</h1>
+        <h2>Nessa área, comece a produção de um veículo.</h2>
+        <button type="button" id="btn-home">voltar home</button>
+    </header>
+
+
+    <main>
+        <section class="main-container"> 
+            <section class="displayArea">
+                    <section class="areaCadastroProducao">
+                            <form id="formEntrada">
+                                <h2>Cadastre as informações do veiculo: </h2>
+                                <br>
+                                <input type="text" id="idVeiculo" placeholder="ID do veículo" readonly>
+                                <input type="text" id="chassiVeiculo" placeholder="Chassi" autocomplete="off" required>
+                                <input type="text" id="modeloVeiculo" placeholder="Modelo do veiculo, informe o ano, tipo de carroceria" autocomplete="off" required>
+                                <input type="text" id="corVeiculo" placeholder="Cor do veiculo" autocomplete="off" required>
+                            </form>
+                    </section>
+                    <section class="insumosVeiculo">
+                                <div class="cadastrarInsumo">
+                                    <h2>Cadastre os insumos:</h2>  
+                                    <br>
+                                    <input class="searchBar" type="text" name="searchBar" id="searchBar" placeholder="Digite aqui o insumo que deseja cadastrar...">
+                                    <button type="button" id="procurarInsumo">Procurar insumo</button>
+                                </div>
+                                <ul id="mostrarItens">
+                                </ul>
+                                <section class="finalizaProducao">
+                                    <div class="btns-actions-save">
+                                        <button id="salvarProducao">Salvar producao</button>
+                                    </div>
+                                </section>  
+                </section>       
+            <ul id="listaVeiculos">
+
+            </ul>
+        </section>
+
+    </main> 
 </body>
 </html>

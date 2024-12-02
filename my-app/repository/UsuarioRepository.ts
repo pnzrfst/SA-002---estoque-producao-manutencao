@@ -13,7 +13,7 @@ export default class UsuarioRepository{
                 "port": 5432,
                 "database": "industria-teste",
                 "user": "postgres",
-                "password": "senai"
+                "password": "Lzpd0304"
             })
         }
     }

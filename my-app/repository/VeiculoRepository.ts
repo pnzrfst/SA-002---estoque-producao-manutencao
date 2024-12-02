@@ -13,7 +13,7 @@ export default class VeiculoRepository{
                 "port": 5432,
                 "database": "industria-teste",
                 "user": "postgres",
-                "password": "senai"
+                "password": "Lzpd0304"
             })
         }
     }
@@ -21,9 +21,10 @@ export default class VeiculoRepository{
     async save(veiculo: Veiculo){
         try {
             this.connection.connect()
-            const sql = "INSERT INTO veiculo (id, chassi, modelo, cor, inicio_producao, fim_producao) VALUES ($1, $2, $3, $4, $5, $6)";
+            const sql = "INSERT INTO veiculo (id, chassi, modelo, cor, inicio_producao, fim_producao) VALUES ($1, $2, $3, $4, $5, $6)  RETURNING id, chassi, modelo, cor, inicio_producao, fim_producao;";
             const values = [veiculo.getId(), veiculo.getChassi(), veiculo.getModelo(), veiculo.getCor(), veiculo.getInicioProducao(), veiculo.getFimProducao()];
-            await this.connection.query(sql, values);
+            const veiculoCadastrado = await this.connection.query(sql, values);
+            return veiculoCadastrado.rows[0]
         } catch (error) {
             console.log(error)
         } finally {
@@ -31,7 +32,20 @@ export default class VeiculoRepository{
         }
     }
 
-
+    
+    async trazerVeiculos(){
+        try {
+            this.connection.connect();
+            const sql = "SELECT * FROM veiculo LIMIT 10"
+            const insumos = await this.connection.query(sql);
+            return insumos.rows;
+        } catch (error) {
+            console.log(error);
+            return []
+        }finally{
+            this.connection.end()
+        }
+    }
 
 
 }

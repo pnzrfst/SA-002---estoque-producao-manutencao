@@ -1,0 +1,207 @@
+/* Resetando algumas configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+.header-icon-infos {
+    text-align: center;
+    background-color: #0077ff;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header-icon-infos h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.header-icon-infos h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+#btn-home {
+    background-color:#fff;
+    color: #0077ff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+#btn-home:hover {
+    background-color: #0077ff;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* Main container */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.displayArea {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.areaCadastroProducao,
+.insumosVeiculo {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.areaCadastroProducao h2,
+.insumosVeiculo h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+#formEntrada {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+input[type="text"]:disabled {
+    background-color: #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Insumo Section */
+.cadastrarInsumo {
+    text-align: center;
+    
+}
+
+#searchBar {
+    padding: 10px;
+    width: 70%;
+    flex: 1;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#procurarInsumo {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+#mostrarItens {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+#mostrarItens li {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#mostrarItens li h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#mostrarItens li p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+#mostrarItens li input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#btn-adicionar {
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #2ecc71;
+}
+
+#btn-adicionar:hover {
+    background-color: #27ae60;
+}
+
+/* Finalize Production */
+.finalizaProducao {
+    margin-top: 30px;
+}
+
+.finalizaProducao .btns-actions-save {
+    text-align: center;
+}
+
+/* Veiculos List */
+#listaVeiculos {
+    margin-top: 30px;
+    list-style-type: none;
+    padding: 0;
+}
+
+#listaVeiculos li {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.veiculoItem h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.veiculoItem p {
+    font-size: 1rem;
+    margin: 5px 0;
+}

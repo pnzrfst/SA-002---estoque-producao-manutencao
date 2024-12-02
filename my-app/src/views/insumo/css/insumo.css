@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
 
@@ -13,4 +14,192 @@
     display: flex;
     flex-direction: column;
     z-index: 100;
+}
+
+header{
+    height: 8rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #0077ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+header .logo-home{
+    margin: 1rem;
+    color: #fff;
+}
+
+header .logo-home button{
+    display: flex;
+    border: none;
+    margin-top: 1rem;
+    color: #0077ff;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    cursor: pointer;
+}
+
+body {
+    background-color: #f0f0f0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main .introducao{
+    height: 1rem;
+    width: 100vw;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0077ff;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+main .form-cadastro-area{
+    height: 3rem;
+    width: 100vw;
+    color: #0077ff;
+    background-color: #fff;
+}
+
+main .form-cadastro-area .inputs-btn{
+    display: flex;
+    height: 3rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    justify-content: left;
+    align-items: center;
+}
+
+.form-cadastro-area button{
+    background-color: #0077ff;
+    border: none;
+    padding: 8px;
+    color: #fff;
+}
+
+.form-cadastro-area input{
+    background-color:#f0f0f0;
+    border: none;
+    padding: 10px;
+}
+
+#tabelaInsumo{
+    background-color: white;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+#tabelaInsumo th, #tabelaInsumo td{
+    padding: 10px;
+}
+  
+#tabelaInsumo th{
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+  
+#tabelaInsumo td{
+    text-align: center;
+    align-items: center;
+}
+  
+#tabelaInsumo .btn-atualizar{
+
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#tabelaInsumo .btn-apagar{
+    margin-left: 1rem;
+    background-color: #bd4444;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo para a área do formulário */
+#att-area {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fixa o formulário na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com transparência */
+    z-index: 9999; /* Maior índice para ficar em frente a outros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Formulário em si */
+#att-area form {
+    background-color: #fff; /* Cor de fundo do formulário */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    position: relative; /* Para o posicionamento do botão de fechar */
+}
+
+
+#btn-fechar {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+}
+
+#btn-fechar:hover {
+    color: #bd4444; 
+}
+
+/* Botões do formulário */
+#att-area button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-atualizar {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#att-area button:hover {
+    background-color: #218838;
+}
+
+
+#att-area.disabled {
+    display: none;
 }

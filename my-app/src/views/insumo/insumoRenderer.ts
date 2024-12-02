@@ -3,6 +3,8 @@ import "./css/insumo.css"
 window.onload = async function() {
     await mostrarInsumos();
 };
+
+
 document.getElementById('btn-home').addEventListener('click',async (event : MouseEvent) => {
     (window as any).navigationApi.irHome();
 })
@@ -27,11 +29,12 @@ document.getElementById('salvarInsumo').addEventListener('click', async(event: M
     }
 
     await (window as any).insumoApi.salvarInsumo(novoInsumo);
-    mostrarInsumos();
-    
     nomeInsumo.value = "";
     quantidadeInsumo.value = "";
     precoUnitario.value = "";
+
+    window.location.reload()
+    
 })
 
 
@@ -60,74 +63,132 @@ const mostrarInsumos = async() =>{
         precoUnitario.innerText = insumo.preco_unitario;
         linhaTabela.appendChild(precoUnitario);
 
+        
+        const colunaAtualizar = document.createElement('td')
         const buttonAtualizar = document.createElement("button");
-        buttonAtualizar.id = 'btnAtualizar'
+        buttonAtualizar.classList.add('btn-atualizar')
         buttonAtualizar.innerText = "Atualizar insumo";
         buttonAtualizar.setAttribute('id', insumo.id);
-        linhaTabela.appendChild(buttonAtualizar);
+        colunaAtualizar.appendChild(buttonAtualizar);
+        linhaTabela.appendChild(colunaAtualizar);
 
 
         //atualizar a qtd de insumos
         buttonAtualizar.addEventListener("click", async(event: MouseEvent) =>{
             event.preventDefault();
-            console.log(insumo.id)
+            console.log(insumo.id);
+            atualizarInsumo(insumo.id)
             const divFormUpdate = document.getElementById('att-area');
-            show(divFormUpdate);
-            pegarInfosInsumo(insumo.id);
+            show(divFormUpdate, true);
+        })
+        
+        const colunaApagar = document.createElement('td')
+        const buttonDeletar = document.createElement("button");
+        buttonDeletar.classList.add('btn-apagar');
+        buttonDeletar.innerText = "Apagar insumo";
+        colunaApagar.appendChild(buttonDeletar);
+        linhaTabela.appendChild(colunaApagar);
+
+
+        buttonDeletar.addEventListener("click", async(event: MouseEvent) =>{
+            const confirmar = window.confirm("Você tem certeza de que deseja realizar esta ação?");
+  
+            if (confirmar) {
+                console.log('confirmou');
+                apagarInsumo(insumo.id)
+                corpoTabela.removeChild(linhaTabela);
+            } else {
+               console.log('saiu')
+            }
+
         })
 
-        const buttonDeletar = document.createElement("button");
-        buttonAtualizar.classList.add('btn-deletar')
-        buttonDeletar.innerText = "Apagar insumo";
-        linhaTabela.appendChild(buttonDeletar);
 
-        corpoTabela.appendChild(linhaTabela)
+        corpoTabela.appendChild(linhaTabela);
 
     });
 }
 
 
- //escutar para atualizar
- document.getElementById('btn-atualizar').addEventListener('click', async(event: MouseEvent) =>{
-    const
-})
+document.getElementById('btn-atualizar')?.addEventListener('click', async (event: MouseEvent) => {
+    event.preventDefault();
+
+    const idInsumo = (document.getElementById('idInsumo') as HTMLInputElement).value;
+    const nomeInsumo = (document.getElementById('attNomeInsumo') as HTMLInputElement).value;
+    const quantidadeInsumo = (document.getElementById('attQuantidadeInsumo') as HTMLInputElement).value;
+    const precoUnitario = (document.getElementById('attPrecoUnitario') as HTMLInputElement).value;
+
+    const insumoAtualizado = {
+        nome_insumo: nomeInsumo,
+        quantidade: quantidadeInsumo,
+        preco_unitario: precoUnitario
+    };
+
+    
+    try {
+        await (window as any).insumoApi.atualizarInsumo(insumoAtualizado, idInsumo);
+        console.log("Insumo atualizado:", insumoAtualizado, idInsumo);
+
+       
+        const divFormUpdate = document.getElementById('att-area');
+        show(divFormUpdate, false);
+
+        
+        window.location.reload()
+    } catch (error) {
+        console.error("Erro ao atualizar insumo:", error);
+    }
+});
 
 
 async function atualizarInsumo(id: string){
 
-    const dadosDoInsumo = await (window as any).insumoApi.trazerInsumoPorId(id)
+    try {
+        const dadosDoInsumo = await (window as any).insumoApi.trazerInsumoPorId(id);
+        console.log(dadosDoInsumo);
 
-    var nomeInsumo = document.getElementById('attNomeInsumo') as HTMLInputElement
-    var quantidadeInsumo = document.getElementById('attQuantidadeInsumo') as HTMLInputElement
-    var precoUnitario = document.getElementById('attPrecoUnitario') as HTMLInputElement
+        const idInsumo = document.getElementById('idInsumo') as HTMLInputElement;
+        const nomeInsumo = document.getElementById('attNomeInsumo') as HTMLInputElement;
+        const quantidadeInsumo = document.getElementById('attQuantidadeInsumo') as HTMLInputElement;
+        const precoUnitario = document.getElementById('attPrecoUnitario') as HTMLInputElement;
 
+        
+        idInsumo.value = dadosDoInsumo.id;
+        nomeInsumo.value = dadosDoInsumo.nome_insumo;
+        quantidadeInsumo.value = dadosDoInsumo.quantidade; 
+        precoUnitario.value = dadosDoInsumo.preco_unitario; 
 
-    const insumoAtualizado = { 
-        nomeInsumo : dadosDoInsumo.nome_insumo,
-        quantidade :  dadosDoInsumo.quantidade,
-        precoUnitario : dadosDoInsumo.preco_unitario
+        console.log("Dados do insumo preenchidos:", dadosDoInsumo);
+    } catch (error) {
+        console.error("Erro ao buscar dados do insumo:", error);
     }
-
-    console.log(insumoAtualizado)
-
-   await (window as any).insumoApi.atualizarInsumo(insumoAtualizado, id)
 }
 
 
-async function pegarInfosInsumo(id : string){
-    const dadosDoInsumo = await (window as any).insumoApi.trazerInsumoPorId(id)
 
-    var nomeInsumo = document.getElementById('attNomeInsumo') as HTMLInputElement
-    var quantidadeInsumo = document.getElementById('attQuantidadeInsumo') as HTMLInputElement
-    var precoUnitario = document.getElementById('attPrecoUnitario') as HTMLInputElement
+async function apagarInsumo(id: string){
+    try {
+        (window as any).insumoApi.apagarInsumo(id);
 
-    nomeInsumo.value = dadosDoInsumo.nome_insumo
-    quantidadeInsumo.value = dadosDoInsumo.quantidade
-    precoUnitario.value = dadosDoInsumo.preco_unitario
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
 
+function show(html: HTMLElement, status: boolean){
+
+    if(status){
+        html.classList.remove('disabled')
+    }else{
+        html.classList.add('disabled')
+    }
+    
 }
 
 
-function show(html: HTMLElement){
-    html.classList.remove('disabled')
-}
+
+document.getElementById('btn-fechar')?.addEventListener('click', () =>{
+    const divFormUpdate = document.getElementById('att-area') as HTMLElement;
+    show(divFormUpdate, false);
+})

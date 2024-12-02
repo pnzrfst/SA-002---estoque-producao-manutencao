@@ -6,7 +6,49 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>entrou</h1>
-    <button id="btn-home" type="button">Voltar para a pagina inicial</button>
+    <header>
+        <div class="logo-home">
+            <h1>Car Factory 4.0</h1>
+            <button id="btn-home" type="button">Voltar para a pagina inicial</button>
+        </div>
+    </header>
+    
+        
+    <main>
+        <section class="introducao">
+            <h1>Bem-vindo à area de de manutenção</h1>
+            <p>Aqui, você poderá cadastrar manutenções exercidas em veiculos das nossas bases de dados.</p>
+        </section>
+        <section class="form-cadastro-area">
+            <div class="inputs-btn">
+                <form>
+                    <input id="nomeInsumo" type="text" placeholder="Informe o nome do Insumo">
+                    <input id="quantidadeInsumo" type="number" placeholder="Informe a quantidade">
+                    <input id="precoUnitario" type="number" placeholder="Informe o preço unitário">
+                </form>
+                <button id="salvarInsumo">Cadastrar manutenção</button>
+            </div>
+        </section>
+        
+        <table id="tabelaInsumo">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome do insumo</th>
+                    <th scope="col">Quantidade(un)</th>
+                    <th scope="col">Preço(unitário)</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Apagar</th>
+                </tr>
+            </thead>
+            
+            <tbody id="tbody">  
+            </tbody>
+        </table>
+        
+    </main>
+    <aside></aside>
+    <footer></footer>
+    
 </body>
 </html>

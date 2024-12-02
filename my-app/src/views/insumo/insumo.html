@@ -6,17 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <header> <button id="btn-home" type="button">Voltar para a pagina inicial</button></header>
+    <header>
+        <div class="logo-home">
+            <h1>Car Factory 4.0</h1>
+            <button id="btn-home" type="button">Voltar para a pagina inicial</button>
+        </div>
+    </header>
+    
+        
     <main>
-        <h1>entrou</h1>
+        <section class="introducao">
+            <h1>Bem-vindo à area de cadastro de insumos</h1>
+            <p>Aqui, você poderá cadastrar, ver, atualizar e apagar seus insumos presentes nas nossas bases de dados.</p>
+        </section>
         <section class="form-cadastro-area">
-            <div>
+            <div class="inputs-btn">
                 <form>
                     <input id="nomeInsumo" type="text" placeholder="Informe o nome do Insumo">
                     <input id="quantidadeInsumo" type="number" placeholder="Informe a quantidade">
                     <input id="precoUnitario" type="number" placeholder="Informe o preço unitário">
                 </form>
-            <button id="salvarInsumo">Cadastrar insumo</button>
+                <button id="salvarInsumo">Cadastrar insumo</button>
             </div>
         </section>
         
@@ -28,7 +38,7 @@
                     <th scope="col">Quantidade(un)</th>
                     <th scope="col">Preço(unitário)</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Deletar</th>
+                    <th scope="col">Apagar</th>
                 </tr>
             </thead>
             
@@ -38,12 +48,16 @@
         
         <section>
             <div id="att-area" class="disabled">
-                <form id="form-update-area" >
+                <form id="form-update-area">
+                    <button type="button" id="btn-fechar" class="btn-fechar">&times;</button>
+                    
+                    <input type="text" name="" id="idInsumo" readonly>
                     <input id="attNomeInsumo" type="text" placeholder="Informe o nome do Insumo">
                     <input id="attQuantidadeInsumo" type="number" placeholder="Informe a quantidade">
                     <input id="attPrecoUnitario" type="number" placeholder="Informe o preço unitário">
+                    
+                    <button type="button" id="btn-atualizar">Atualizar insumo</button>
                 </form>
-                <button type="button" id="btn-atualizar">Atualizar insumo</button>
             </div>
         </section>
     </main>

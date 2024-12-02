@@ -30,4 +30,21 @@ export default class Insumos{
         return this.preco_unitario
     }
 
+
+    public setNome_insumo(nome_insumo: string): void{
+        this.nome_insumo = nome_insumo
+    }
+
+    
+    public setQuantidade(quantidade: number): void{
+        this.quantidade = quantidade
+    }
+
+    
+    public setPreco_unitario(preco_unitario: number): void{
+        this.preco_unitario = preco_unitario
+    }
+
+    
+
 }

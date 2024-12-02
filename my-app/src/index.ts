@@ -2,8 +2,12 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import Usuario from '../entity/Usuario';
 import UsuarioRepository from '../repository/UsuarioRepository'
 import InsumosRepository from '../repository/InsumosRepository'
+import VeiculoRepository from '../repository/VeiculoRepository'
+import Insumo_por_veiculoRepository from '../repository/Insumo_por_veiculoRepository'
 import { compare, hash } from 'bcrypt';
 import Insumos from '../entity/Insumos';
+import Veiculo from '../entity/Veiculo';
+import Insumo_por_veiculo from '../entity/Insumo_por_veiculo';
 
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
@@ -63,7 +67,7 @@ ipcMain.handle("create", async (event:any, usuario: any) => {
   const {nome, cpf, email_cadastro, password} = usuario;
   const passwordHasheado = await hash(password, 10);
   const novoUsuario = new Usuario(nome, cpf, email_cadastro, passwordHasheado);
-  new UsuarioRepository().save(novoUsuario);
+  return new UsuarioRepository().save(novoUsuario);
 
 })
 
@@ -89,12 +93,11 @@ ipcMain.handle('insumoExiste', async(_: any, nome: string) =>{
   return await new InsumosRepository().verificarInsumoCadastrado(nome)
 })
 
-
 ipcMain.handle('saveInsumo',async (_: any, insumo: any) => {
   console.log(insumo);
   const {nome_insumo, quantidade, preco_unitario} = insumo;
   const novoInsumo = new Insumos(nome_insumo, quantidade, preco_unitario);
-  new InsumosRepository().save(novoInsumo);
+  await new InsumosRepository().save(novoInsumo);
 })
 
 ipcMain.handle('buscarInsumos', async() =>{
@@ -106,22 +109,54 @@ ipcMain.handle('trazerId', async (_:any, id: string) => {
   return await new InsumosRepository().trazerInsumoPorId(id)
 })
 
-ipcMain.handle('atualizarInsumo', async(_: any, insumo: any, id: string) =>{
-  const {nome_insumo, quantidade, preco_unitario} = insumo;
-  new InsumosRepository().atualizarInsumo([insumo.setNome_insumo = nome_insumo, insumo.setQuantidade = quantidade, insumo.setPreco_unitario = preco_unitario], id)
+ipcMain.handle('trazerPorNome', async (_:any, nome: string) => {
+  return await new InsumosRepository().trazerInsumoPorNome(nome)
 })
 
 
+ipcMain.handle('descontarInsumo', async(_: any, id: string, quantidade: number) =>{
+  return await new InsumosRepository().descontarInsumo(id, quantidade)
+})
 
 
+ipcMain.handle('atualizarInsumo', async(_: any, insumo: any, id: string) =>{
+  const {nome_insumo, quantidade, preco_unitario,} = insumo;
+  console.log('chegou:', { nome_insumo, quantidade, preco_unitario}, id);
+  const insumoAtualizado = new InsumosRepository().atualizarInsumo(nome_insumo, quantidade, preco_unitario, id)
+  return insumoAtualizado
+})
+
+ipcMain.handle('apagarInsumo', (_: any, id: string) =>{
+  console.log('id recebido:', id)
+  return new InsumosRepository().apagarInsumo(id)
+})
+
+//------------------------------------------------------
 
 
+//functions veiculos
+
+ipcMain.handle('createVeiculo', async(_: any, veiculo: any) =>{
+  const {chassi,  modelo, cor} = veiculo;
+  const novoVeiculo = new Veiculo(chassi,  modelo, cor);
+  const veiculoCadastrado = await new VeiculoRepository().save(novoVeiculo);
+  return veiculoCadastrado
+})
+
+ipcMain.handle('trazerVeiculos', async() =>{
+  return await new VeiculoRepository().trazerVeiculos()
+})
 
 
+//------------------------------------
 
-
-
-
+//functions insumo_por_veiculo
+ipcMain.handle('cadastrar', async(_: any, associarInsumoVeiculo: any) =>{
+  console.log(associarInsumoVeiculo);
+  const {fk_veiculo, fk_insumo, quantidade} = associarInsumoVeiculo;
+  const novaAssociacao = new Insumo_por_veiculo(fk_veiculo, fk_insumo, quantidade)
+  await new Insumo_por_veiculoRepository().save(novaAssociacao);
+})
 
 //navigation
 ipcMain.on('ir-manutencao', () =>{

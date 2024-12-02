@@ -6,8 +6,10 @@ export default class Veiculo{
     private chassi: string
     private modelo: string
     private cor: string
+    private insumos: Array<{insumoId: string, quantidade: number }> = [];
     private inicioProducao: Date
     private fimProducao: Date
+   
 
 
     constructor(chassi: string, modelo: string, cor: string, id?: string){
@@ -44,4 +46,13 @@ export default class Veiculo{
         return this.fimProducao;
     }
 
+    public getInsumos(){
+        return this.insumos
+    }
+
+
+    
+    public colocarInsumo(insumoId: string, quantidade: number) {
+        this.insumos.push({ insumoId, quantidade });
+    }
 }
