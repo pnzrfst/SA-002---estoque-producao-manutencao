@@ -19,33 +19,22 @@
             <h1>Bem-vindo à area de de manutenção</h1>
             <p>Aqui, você poderá cadastrar manutenções exercidas em veiculos das nossas bases de dados.</p>
         </section>
-        <section class="form-cadastro-area">
-            <div class="inputs-btn">
-                <form>
-                    <input id="nomeInsumo" type="text" placeholder="Informe o nome do Insumo">
-                    <input id="quantidadeInsumo" type="number" placeholder="Informe a quantidade">
-                    <input id="precoUnitario" type="number" placeholder="Informe o preço unitário">
+
+        <ul id="listaProducoes">
+            <button id="iniciarManutencao">Cadastrar manutenção</button>
+        </ul>
+
+        <section>
+            <div id="cadastro-area" class="disabled">
+                <form id="form-cadastro-area">
+                    <button type="button" id="btn-fechar" class="btn-fechar">&times;</button>
+                    <input type="text" name="" id="fkveiculo" readonly>
+                    <textarea id="descricaoManutencao" placeholder="Digite aqui uma descrição do que foi feito:"></textarea>
+                    <input type="number" id="valorManutencao" placeholder="Digite o valor da manutenção:">
+                    <button type="button" class="btn-atualizar" id="finalizarManutencao">Salvar</button>
                 </form>
-                <button id="salvarInsumo">Cadastrar manutenção</button>
             </div>
         </section>
-        
-        <table id="tabelaInsumo">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome do insumo</th>
-                    <th scope="col">Quantidade(un)</th>
-                    <th scope="col">Preço(unitário)</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Apagar</th>
-                </tr>
-            </thead>
-            
-            <tbody id="tbody">  
-            </tbody>
-        </table>
-        
     </main>
     <aside></aside>
     <footer></footer>

@@ -37,8 +37,8 @@ export default class VeiculoRepository{
         try {
             this.connection.connect();
             const sql = "SELECT * FROM veiculo LIMIT 10"
-            const insumos = await this.connection.query(sql);
-            return insumos.rows;
+            const veiculos = await this.connection.query(sql);
+            return veiculos.rows;
         } catch (error) {
             console.log(error);
             return []
@@ -47,5 +47,17 @@ export default class VeiculoRepository{
         }
     }
 
-
+    async trazerVeiculoPorId(id: string){
+        try {
+            this.connection.connect();
+            const sql = "SELECT * FROM veiculo WHERE id = $1"
+            const veiculo = await this.connection.query(sql, [id]);
+            return veiculo.rows[0];
+        } catch (error) {
+            console.log(error);
+            return []
+        }finally{
+            this.connection.end()
+        }
+    }
 }

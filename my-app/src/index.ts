@@ -8,6 +8,8 @@ import { compare, hash } from 'bcrypt';
 import Insumos from '../entity/Insumos';
 import Veiculo from '../entity/Veiculo';
 import Insumo_por_veiculo from '../entity/Insumo_por_veiculo';
+import Manutencao from '../entity/Manutencao';
+import ManutencaoRepository from "../repository/ManutencaoRepository"
 
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
@@ -147,6 +149,9 @@ ipcMain.handle('trazerVeiculos', async() =>{
   return await new VeiculoRepository().trazerVeiculos()
 })
 
+ipcMain.handle('trazerVeiculoPorId', async (_:any, id: string) => {
+  return await new VeiculoRepository().trazerVeiculoPorId(id)
+})
 
 //------------------------------------
 
@@ -157,6 +162,22 @@ ipcMain.handle('cadastrar', async(_: any, associarInsumoVeiculo: any) =>{
   const novaAssociacao = new Insumo_por_veiculo(fk_veiculo, fk_insumo, quantidade)
   await new Insumo_por_veiculoRepository().save(novaAssociacao);
 })
+
+
+//functions manutencao
+
+
+ipcMain.handle('cadastrarManutencao', async(_: any, manutencao: any) =>{
+  console.log(manutencao);
+  const {descricao, valor, fk_veiculo} = manutencao;
+  const novaManutencao = new Manutencao(descricao, valor, fk_veiculo)
+  const manutencaoCadastrada = await new ManutencaoRepository().save(novaManutencao);
+  console.log(`manutencao cadastrada: ${manutencaoCadastrada}`)
+})
+
+
+
+
 
 //navigation
 ipcMain.on('ir-manutencao', () =>{

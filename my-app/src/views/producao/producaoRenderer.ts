@@ -24,7 +24,7 @@ document.getElementById('procurarInsumo').addEventListener("click", async (event
     const insumoJaAdicionado = insumosUsados.find(insumo => insumo.insumoId === insumoEncontrado.id);
 
     if (insumoJaAdicionado) {
-        alert(`O insumo ${insumoEncontrado.nome_insumo} já foi adicionado.`);
+        console.log(`O insumo ${insumoEncontrado.nome_insumo} já foi adicionado.`);
     } else {
         const mostrarInsumos = document.getElementById('mostrarItens');
         const li = document.createElement("li");
@@ -48,13 +48,13 @@ document.getElementById('procurarInsumo').addEventListener("click", async (event
             var quantidadeSelecionada = parseFloat(selecionarQtd.value);
             
             if (isNaN(quantidadeSelecionada) || quantidadeSelecionada <= 0) {
-                alert("por favor, insira uma quantidade válida.");
+                console.log("por favor, insira uma quantidade válida.");
                 return; 
             }
 
             
             if (quantidadeSelecionada > insumoEncontrado.quantidade) {
-                alert(`estoque insuficiente para o insumo ${insumoEncontrado.nome_insumo}`);
+                console.log(`estoque insuficiente para o insumo ${insumoEncontrado.nome_insumo}`);
                 return;
             }
 
@@ -148,7 +148,7 @@ document.getElementById('salvarProducao').addEventListener('click', async(event:
 
         } else {
             console.error(`Estoque insuficiente para o insumo ${insumo.nome_insumo}`);
-            alert(`Estoque insuficiente para o insumo ${insumo.nome_insumo}`);
+            console.log(`Estoque insuficiente para o insumo ${insumo.nome_insumo}`);
         }
     }
 

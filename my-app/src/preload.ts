@@ -2,6 +2,7 @@ import {contextBridge, ipcRenderer } from "electron";
 import Usuario from "../entity/Usuario";
 import Insumos from "../entity/Insumos";
 import Veiculo from "../entity/Veiculo"
+import Manutencao from "../entity/Manutencao"
 
 contextBridge.exposeInMainWorld("userApi", {
     cadastrarUser: async(usuario : Usuario) => await ipcRenderer.invoke("create", usuario),
@@ -32,8 +33,14 @@ contextBridge.exposeInMainWorld("navigationApi", {
 
 contextBridge.exposeInMainWorld("veiculoApi", {
     cadastrarVeiculo: async(veiculo: Veiculo) => await ipcRenderer.invoke("createVeiculo", veiculo),
-    trazerVeiculos: async() => await ipcRenderer.invoke('trazerVeiculos')
+    trazerVeiculos: async() => await ipcRenderer.invoke('trazerVeiculos'),
+    trazerVeiculoPorId: async(id: string) => await ipcRenderer.invoke('trazerVeiculoPorId', id)
    
+})
+
+
+contextBridge.exposeInMainWorld("manutencaoApi", {
+    cadastrarManutencao: async(manutencao: Manutencao) => await ipcRenderer.invoke("cadastrarManutencao", manutencao)
 })
 
 
