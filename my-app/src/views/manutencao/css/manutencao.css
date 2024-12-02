@@ -12,6 +12,19 @@
     z-index: 100;
 }
 
+#form-cadastro-area input{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#form-cadastro-area textarea{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+
 header{
     height: 8rem;
     width: 100vw;
@@ -151,4 +164,35 @@ main .form-cadastro-area .inputs-btn{
 
 #cadastro-area.disabled {
     display: none;
+}
+
+
+#listaProducoes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    grid-gap: 5px; 
+}
+
+
+.veiculoItem{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    background-color: #fff;
+    width: 25vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+}
+
+
+
+.btn_iniciarProd{
+    padding: 10px;
+    border: none;
+    color: #0077ff;
+    background-color: #fff;
+    margin-top: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.014);
+    border: 1px solid #0077ff;
+    cursor: pointer;
 }

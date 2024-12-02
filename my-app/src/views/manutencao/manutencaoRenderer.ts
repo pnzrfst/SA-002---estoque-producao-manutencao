@@ -47,10 +47,10 @@ async function mostrarProducao() {
      const btnIniciarManutencao = document.createElement("button");
      btnIniciarManutencao.classList.add("iniciarManutencao");
      btnIniciarManutencao.innerText = "Cadastrar manutenção";
+     btnIniciarManutencao.classList.add('btn_iniciarProd')
      btnIniciarManutencao.setAttribute('data-id', producao.id.toString());
 
      btnIniciarManutencao.addEventListener("click", () => {
-        // Recupera o data-id do botão clicado
         const fk_veiculo = btnIniciarManutencao.getAttribute('data-id');
         
         if (fk_veiculo) {
@@ -131,7 +131,7 @@ function show(html: HTMLElement, status: boolean){
 
 
 document.getElementById('btn-fechar')?.addEventListener('click', () =>{
-    console.log(    'entrou')
+    console.log('entrou')
     const divFormUpdate = document.getElementById('cadastro-area') as HTMLElement;
     show(divFormUpdate, false);
 })

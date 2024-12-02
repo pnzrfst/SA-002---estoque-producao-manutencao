@@ -28,7 +28,8 @@ contextBridge.exposeInMainWorld("navigationApi", {
     irHome: () => ipcRenderer.send('vai-home'),
     irProducao: () => ipcRenderer.send('ir-producao'),
     irManutencao: () => ipcRenderer.send('ir-manutencao'),
-    irInsumos: () => ipcRenderer.send('ir-insumo')
+    irInsumos: () => ipcRenderer.send('ir-insumo'),
+    irManutencoes: () => ipcRenderer.send('ir-manutencao')
 })
 
 contextBridge.exposeInMainWorld("veiculoApi", {

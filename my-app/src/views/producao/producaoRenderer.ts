@@ -198,13 +198,23 @@ async function mostrarProducao() {
      corVeiculo.innerText = `Cor: ${producao.cor}`;
     
      const inicioProducao = document.createElement("p");
-     inicioProducao.innerText = `Inicio da produção: ${producao.inicio_producao}`
+     inicioProducao.innerText = 'Inicio da produção: ' + new Intl.DateTimeFormat('pt-BR', 
+         {   
+            dateStyle: 'full',
+            timeStyle: 'medium'
+        }
+     ).format(producao.inicio_producao)
      
      const fimProducao = document.createElement("p");
-     fimProducao.innerText = `Fim da produção: ${producao.fim_producao}`
+     fimProducao.innerText = 'Fim da produção: ' + new Intl.DateTimeFormat('pt-BR', 
+        {   
+            dateStyle: 'full',
+            timeStyle: 'medium'
+        }
+    ).format(producao.fim_producao)
      
 
-      //Adiciona os elementos à lista
+     
      li.appendChild(idVeiculo);
      li.appendChild(chassiVeiculo);
      li.appendChild(modeloVeiculo);

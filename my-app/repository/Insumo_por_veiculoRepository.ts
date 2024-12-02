@@ -13,7 +13,7 @@ export default class Insumo_por_veiculoRepository{
                 "port": 5432,
                 "database": "industria-teste",
                 "user": "postgres",
-                "password": "Lzpd0304"
+                "password": "senai"
             })
         }
     }
