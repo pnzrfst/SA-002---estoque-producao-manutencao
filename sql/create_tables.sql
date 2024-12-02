@@ -43,3 +43,25 @@ valor integer not null,
 fk_veiculo uuid not null,
 FOREIGN KEY (fk_veiculo) REFERENCES veiculo(id)
 );
+
+------------------------------------------------------------------
+INSERT INTO insumo (id, nome_insumo, quantidade, preco_unitario)
+VALUES (default, 'motor', 20, 5000),
+(default, 'suspensão', 20, 2000),
+(default, 'freios', 20, 1500),
+(default, 'direção', 20, 6000),
+(default, 'chicote', 20, 4000),
+(default, 'arrefecimento', 20, 1500),
+(default, 'tanque', 20, 800),
+(default, 'ar-condicionado', 70, 3000),
+(default, 'lanternas', 80, 900),
+(default, 'pneu', 100, 600),
+(default, 'parabrisa', 30, 800),
+(default, 'pastilha', 200, 100),
+(default, 'banco', 40, 3000);
+
+INSERT INTO veiculo (id, chassi, modelo, cor, inicio_producao, fim_producao)
+values (default, 2334343443, 'omega 3.0', 'prata', 'Mon, 02 Dec 2024 19:30:01 GMT', 'Mon, 02 Dec 2024 19:33:01 GMT')
+
+
+
